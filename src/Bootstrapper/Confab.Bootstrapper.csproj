@@ -7,7 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Shared\Confab.Shared\Confab.Shared.csproj" />
+      <ProjectReference Include="..\Modules\Hosts\Confab.Modules.Hosts.csproj" />
+      <ProjectReference Include="..\Shared\Confab.Shared.csproj" />
     </ItemGroup>
 
 </Project>
