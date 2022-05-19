@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrapper", "Bootstrappe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confab.Bootstrapper", "src\Bootstrapper\Confab.Bootstrapper.csproj", "{BAAA91CA-C57B-450B-B6A7-CD80C08B21EE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{FD4BE942-F594-4F02-B103-6DD773F091B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confab.Shared", "src\Shared\Confab.Shared\Confab.Shared.csproj", "{90E89714-5A33-4B4D-933C-1EFC49519B3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,11 +24,17 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{962B938F-98CC-4BDC-A0E5-5939B7889AAD} = {8BE3FF2F-3071-427F-B313-DB958C03249C}
 		{BAAA91CA-C57B-450B-B6A7-CD80C08B21EE} = {962B938F-98CC-4BDC-A0E5-5939B7889AAD}
+		{FD4BE942-F594-4F02-B103-6DD773F091B4} = {8BE3FF2F-3071-427F-B313-DB958C03249C}
+		{90E89714-5A33-4B4D-933C-1EFC49519B3A} = {FD4BE942-F594-4F02-B103-6DD773F091B4}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BAAA91CA-C57B-450B-B6A7-CD80C08B21EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BAAA91CA-C57B-450B-B6A7-CD80C08B21EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAAA91CA-C57B-450B-B6A7-CD80C08B21EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAAA91CA-C57B-450B-B6A7-CD80C08B21EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90E89714-5A33-4B4D-933C-1EFC49519B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E89714-5A33-4B4D-933C-1EFC49519B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E89714-5A33-4B4D-933C-1EFC49519B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E89714-5A33-4B4D-933C-1EFC49519B3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
