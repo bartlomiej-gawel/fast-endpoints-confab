@@ -10,4 +10,9 @@
       <ProjectReference Include="..\..\Shared\Confab.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\Conferences\Exceptions" />
+      <Folder Include="Features\Hosts\Exceptions" />
+    </ItemGroup>
+
 </Project>

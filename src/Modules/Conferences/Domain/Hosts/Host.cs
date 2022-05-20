@@ -1,9 +1,11 @@
 ﻿using Confab.Modules.Conferences.Domain.Conferences;
+using Confab.Modules.Conferences.Domain.Hosts.Policies;
 using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
+using Confab.Shared.Types;
 
 namespace Confab.Modules.Conferences.Domain.Hosts;
 
-public class Host
+public class Host : BaseEntity
 {
     public HostId Id { get; private set; }
 
@@ -39,5 +41,6 @@ public class Host
     
     public void Delete()
     {
+        CheckPolicy(new HostDeletionPolicy(Conferences));
     }
 }
