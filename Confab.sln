@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confab.Shared", "src\Shared
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A3D84113-D6EE-46B7-B45F-C4500D347853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confab.Modules.Hosts", "src\Modules\Hosts\Confab.Modules.Hosts.csproj", "{CF1C20B3-6C3E-4406-8478-BEB3C56AED05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confab.Modules.Conferences", "src\Modules\Conferences\Confab.Modules.Conferences.csproj", "{CF1C20B3-6C3E-4406-8478-BEB3C56AED05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
