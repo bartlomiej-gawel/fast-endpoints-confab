@@ -9,7 +9,7 @@ public class Conference : BaseEntity
 {
     public ConferenceId Id { get; private set; }
 
-    public HostId HostId { get; }
+    public HostId HostId { get; private set; }
 
     public ConferenceName Name { get; private set; }
 
