@@ -11,8 +11,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Features\Conferences\Endpoints" />
       <Folder Include="Features\Conferences\Exceptions" />
-      <Folder Include="Features\Hosts\Exceptions" />
       <Folder Include="Infrastructure\Migrations" />
     </ItemGroup>
 

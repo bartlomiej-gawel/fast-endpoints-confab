@@ -1,6 +1,6 @@
 ﻿namespace Confab.Shared.Postgres;
 
-public class PostgresOptions
+internal class PostgresOptions
 {
-    
+    public string ConnectionString { get; set; } = string.Empty;
 }

@@ -7,8 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Modules\Hosts\Confab.Modules.Conferences.csproj" />
+      <ProjectReference Include="..\Modules\Conferences\Confab.Modules.Conferences.csproj" />
       <ProjectReference Include="..\Shared\Confab.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 
 </Project>
