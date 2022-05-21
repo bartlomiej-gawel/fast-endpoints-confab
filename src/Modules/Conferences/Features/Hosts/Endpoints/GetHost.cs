@@ -16,7 +16,7 @@ internal class GetHostResponse
     public Guid HostId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
-    public IReadOnlyList<ConferenceDto> Conferences { get; set; }
+    public IEnumerable<ConferenceDto> Conferences { get; set; }
     
     internal class ConferenceDto
     {
@@ -45,8 +45,8 @@ internal class GetHostEndpoint : Endpoint<GetHostRequest, GetHostResponse>
     {
         var host = await _dbContext.Hosts
             .AsNoTracking()
-            .Include(x => x.Conferences)
-            .FirstOrDefaultAsync(x => x.Id.Value == req.HostId, ct);
+            .Include(host => host.Conferences)
+            .FirstOrDefaultAsync(host => host.Id.Value == req.HostId, ct);
 
         if (host is null)
         {

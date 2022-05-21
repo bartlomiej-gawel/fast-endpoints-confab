@@ -3,6 +3,7 @@ using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace Confab.Modules.Conferences.Features.Hosts.Endpoints;
 
@@ -37,7 +38,10 @@ internal class UpdateHostEndpoint : Endpoint<UpdateHostRequest>
 
     public override async Task HandleAsync(UpdateHostRequest req, CancellationToken ct)
     {
-        var host = await _dbContext.Hosts.FindAsync(req.HostId);
+        var host = await _dbContext.Hosts
+            .AsNoTracking()
+            .FirstOrDefaultAsync(host => host.Id.Value == req.HostId, ct);
+        
         if (host is null)
         {
             throw new HostNotFoundException(req.HostId);

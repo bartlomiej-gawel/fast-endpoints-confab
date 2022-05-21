@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using FastEndpoints;
+using FluentValidation;
 using ValueOf;
 
 namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
@@ -7,7 +8,7 @@ public class ConferenceId : ValueOf<Guid, ConferenceId>
 {
 }
 
-public class ConferenceIdValidator : AbstractValidator<ConferenceId>
+public class ConferenceIdValidator : Validator<ConferenceId>
 {
     public ConferenceIdValidator()
     {

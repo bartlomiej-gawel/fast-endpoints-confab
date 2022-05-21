@@ -7,7 +7,6 @@ namespace Confab.Modules.Conferences.Infrastructure;
 internal class ConferencesDbContext : DbContext
 {
     public DbSet<Host> Hosts { get; set; } = null!;
-
     public DbSet<Conference> Conferences { get; set; } = null!;
 
     public ConferencesDbContext(DbContextOptions<ConferencesDbContext> options) : base(options)

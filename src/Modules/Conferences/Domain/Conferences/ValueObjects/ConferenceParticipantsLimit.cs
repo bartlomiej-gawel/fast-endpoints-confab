@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using FastEndpoints;
+using FluentValidation;
 using ValueOf;
 
 namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
@@ -7,7 +8,7 @@ public class ConferenceParticipantsLimit : ValueOf<int?, ConferenceParticipantsL
 {
 }
 
-public class ConferenceParticipantsLimitValidator : AbstractValidator<ConferenceParticipantsLimit>
+public class ConferenceParticipantsLimitValidator : Validator<ConferenceParticipantsLimit>
 {
     public ConferenceParticipantsLimitValidator()
     {

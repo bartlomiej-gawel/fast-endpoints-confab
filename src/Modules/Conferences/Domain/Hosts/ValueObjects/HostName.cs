@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using FastEndpoints;
+using FluentValidation;
 using ValueOf;
 
 namespace Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
@@ -7,7 +8,7 @@ public class HostName : ValueOf<string, HostName>
 {
 }
 
-public class HostNameValidator : AbstractValidator<HostName>
+public class HostNameValidator : Validator<HostName>
 {
     public HostNameValidator()
     {

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using FastEndpoints;
+using FluentValidation;
 using ValueOf;
 
 namespace Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
@@ -7,7 +8,7 @@ public class HostId : ValueOf<Guid, HostId>
 {
 }
 
-public class HostIdValidator : AbstractValidator<HostId>
+public class HostIdValidator : Validator<HostId>
 {
     public HostIdValidator()
     {

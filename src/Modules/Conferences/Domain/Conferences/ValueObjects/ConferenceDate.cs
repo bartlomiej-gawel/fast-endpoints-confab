@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using FastEndpoints;
+using FluentValidation;
 using ValueOf;
 
 namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
@@ -7,7 +8,7 @@ public class ConferenceDate : ValueOf<(DateTime From, DateTime To), ConferenceDa
 {
 }
 
-public class ConferenceDateValidator : AbstractValidator<ConferenceDate>
+public class ConferenceDateValidator : Validator<ConferenceDate>
 {
     public ConferenceDateValidator()
     {

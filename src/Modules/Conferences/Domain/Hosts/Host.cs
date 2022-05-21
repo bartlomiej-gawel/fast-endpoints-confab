@@ -8,11 +8,8 @@ namespace Confab.Modules.Conferences.Domain.Hosts;
 public class Host : BaseEntity
 {
     public HostId Id { get; private set; }
-
     public HostName Name { get; private set; }
-
     public HostDescription Description { get; private set; }
-    
     public List<Conference> Conferences { get; private set; }
 
     private Host()

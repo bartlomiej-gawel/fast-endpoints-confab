@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using FastEndpoints;
+using FluentValidation;
 using ValueOf;
 
 namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
@@ -7,7 +8,7 @@ public class ConferenceLocation : ValueOf<(string City, string Street), Conferen
 {
 }
 
-public class ConferenceLocationValidator : AbstractValidator<ConferenceLocation>
+public class ConferenceLocationValidator : Validator<ConferenceLocation>
 {
     public ConferenceLocationValidator()
     {

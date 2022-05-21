@@ -8,17 +8,11 @@ namespace Confab.Modules.Conferences.Domain.Conferences;
 public class Conference : BaseEntity
 {
     public ConferenceId Id { get; private set; }
-
     public HostId HostId { get; private set; }
-
     public ConferenceName Name { get; private set; }
-
     public ConferenceDescription Description { get; private set; }
-
     public ConferenceLocation Location { get; private set; }
-
     public ConferenceParticipantsLimit ParticipantsLimit { get; private set; }
-
     public ConferenceDate Date { get; private set; }
 
     private Conference()
