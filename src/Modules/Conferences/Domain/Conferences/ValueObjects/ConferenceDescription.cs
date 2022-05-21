@@ -6,6 +6,8 @@ namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
 
 public class ConferenceDescription : ValueOf<string, ConferenceDescription>
 {
+    // public static implicit operator string(Nit nit) => nit.Value;
+    // public static implicit operator Nit(string nit) => From(nit);
 }
 
 public class ConferenceDescriptionValidator : Validator<ConferenceDescription>

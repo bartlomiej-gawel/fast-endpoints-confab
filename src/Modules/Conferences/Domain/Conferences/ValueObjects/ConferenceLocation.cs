@@ -6,6 +6,8 @@ namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
 
 public class ConferenceLocation : ValueOf<(string City, string Street), ConferenceLocation>
 {
+    public string GetCity => Value.City;
+    public string GetStreet => Value.Street;
 }
 
 public class ConferenceLocationValidator : Validator<ConferenceLocation>

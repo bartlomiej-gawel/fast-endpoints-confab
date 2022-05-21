@@ -29,10 +29,5 @@ internal class HostConfiguration : IEntityTypeConfiguration<Host>
             .IsRequired()
             .HasMaxLength(1000)
             .HasConversion(x => x.Value, x => HostDescription.From(x));
-
-        // builder.HasMany(x => x.Conferences)
-        //     .WithOne(x => x.Host)
-        //     .HasForeignKey(x => x.HostId)
-        //     .IsRequired();
     }
 }
