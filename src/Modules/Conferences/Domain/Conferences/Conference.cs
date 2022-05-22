@@ -20,43 +20,37 @@ public class Conference : BaseEntity
     }
 
     private Conference(
-        Guid hostId,
-        string name,
-        string description,
-        string city,
-        string street,
-        int participantsLimit,
-        DateTime from,
-        DateTime to)
+        HostId hostId,
+        ConferenceName name,
+        ConferenceDescription description,
+        ConferenceLocation location,
+        ConferenceParticipantsLimit participantsLimit,
+        ConferenceDate date)
     {
         Id = new ConferenceId(Guid.NewGuid());
-        HostId = new HostId(hostId);
-        Name = new ConferenceName(name);
-        Description = new ConferenceDescription(description);
-        Location = new ConferenceLocation(city, street);
-        ParticipantsLimit = new ConferenceParticipantsLimit(participantsLimit);
-        Date = new ConferenceDate(from, to);
+        HostId = hostId;
+        Name = name;
+        Description = description;
+        Location = location;
+        ParticipantsLimit = participantsLimit;
+        Date = date;
     }
 
     public static Conference Create(
-        Guid hostId,
-        string name,
-        string description,
-        string city,
-        string street,
-        int participantsLimit,
-        DateTime from,
-        DateTime to)
+        HostId hostId,
+        ConferenceName name,
+        ConferenceDescription description,
+        ConferenceLocation location,
+        ConferenceParticipantsLimit participantsLimit,
+        ConferenceDate date)
     {
         return new Conference(
             hostId,
             name,
             description,
-            city,
-            street,
+            location,
             participantsLimit,
-            from,
-            to);
+            date);
     }
 
     public void Update(
