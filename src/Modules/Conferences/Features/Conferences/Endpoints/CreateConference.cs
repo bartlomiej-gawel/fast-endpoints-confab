@@ -47,7 +47,7 @@ internal class CreateConferenceEndpoint : Endpoint<CreateConferenceRequest>
 
     public override async Task HandleAsync(CreateConferenceRequest req, CancellationToken ct)
     {
-        var conference = Conference.CreateConference(
+        var conference = Conference.Create(
             new HostId(req.HostId),
             new ConferenceName(req.Name),
             new ConferenceDescription(req.Description),

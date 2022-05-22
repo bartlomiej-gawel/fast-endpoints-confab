@@ -5,7 +5,7 @@ using Confab.Shared.Types;
 
 namespace Confab.Modules.Conferences.Domain.Hosts;
 
-public class Host : BaseEntity
+internal class Host : BaseEntity
 {
     public HostId Id { get; private set; }
     public HostName Name { get; private set; }

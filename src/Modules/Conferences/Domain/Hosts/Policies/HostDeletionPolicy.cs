@@ -3,7 +3,7 @@ using Confab.Shared.Exceptions.Policies;
 
 namespace Confab.Modules.Conferences.Domain.Hosts.Policies;
 
-public class HostDeletionPolicy : IPolicy
+internal class HostDeletionPolicy : IPolicy
 {
     private readonly List<Conference> _conferences;
     

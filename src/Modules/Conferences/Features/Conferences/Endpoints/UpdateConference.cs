@@ -1,6 +1,8 @@
-﻿using Confab.Modules.Conferences.Features.Conferences.Exceptions;
+﻿using Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
+using Confab.Modules.Conferences.Features.Conferences.Exceptions;
 using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,20 +10,27 @@ namespace Confab.Modules.Conferences.Features.Conferences.Endpoints;
 
 internal class UpdateConferenceRequest
 {
-    public Guid ConferenceId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public string City { get; set; }
-    public string Street { get; set; }
-    public int ParticipantsLimit { get; set; }
-    public DateTime From { get; set; }
-    public DateTime To { get; set; }
+    public Guid ConferenceId { get; init; } = default!;
+    public string Name { get; init; } = default!;
+    public string Description { get; init; } = default!;
+    public string City { get; init; } = default!;
+    public string Street { get; init; } = default!;
+    public int ParticipantsLimit { get; init; } = default!;
+    public DateTime From { get; init; } = default!;
+    public DateTime To { get; init; } = default!;
 }
 
 internal class UpdateConferenceRequestValidator : Validator<UpdateConferenceRequest>
 {
     public UpdateConferenceRequestValidator()
     {
+        RuleFor(x => x.Name).NotEmpty().WithMessage("Please specify a name");
+        RuleFor(x => x.Description).NotEmpty().WithMessage("Please specify a description");
+        RuleFor(x => x.City).NotEmpty().WithMessage("Please specify a city");
+        RuleFor(x => x.Street).NotEmpty().WithMessage("Please specify a street");
+        RuleFor(x => x.ParticipantsLimit).NotEmpty().WithMessage("Please specify a participants limit");
+        RuleFor(x => x.From).NotEmpty().WithMessage("Please specify a start date");
+        RuleFor(x => x.To).NotEmpty().WithMessage("Please specify an end date");
     }
 }
 
@@ -47,13 +56,11 @@ internal class UpdateConferenceEndpoint : Endpoint<UpdateConferenceRequest>
         }
         
         conference.Update(
-            req.Name,
-            req.Description,
-            req.City,
-            req.Street,
-            req.ParticipantsLimit,
-            req.From,
-            req.To);
+            new ConferenceName(req.Name),
+            new ConferenceDescription(req.Description),
+            new ConferenceLocation(req.City, req.Street),
+            new ConferenceParticipantsLimit(req.ParticipantsLimit),
+            new ConferenceDate(req.From, req.To));
 
         _dbContext.Conferences.Update(conference);
         await _dbContext.SaveChangesAsync(ct);
