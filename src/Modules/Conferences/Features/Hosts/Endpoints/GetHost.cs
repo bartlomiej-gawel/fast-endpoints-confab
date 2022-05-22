@@ -25,7 +25,7 @@ internal class GetHostResponse
         public string Description { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
-        public int? ParticipantsLimit { get; set; }
+        public int ParticipantsLimit { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
     }
@@ -63,11 +63,11 @@ internal class GetHostEndpoint : Endpoint<GetHostRequest, GetHostResponse>
                 ConferenceId = conference.Id.Value,
                 Name = conference.Name.Value,
                 Description = conference.Description.Value,
-                City = conference.Location.Value.City,
-                Street = conference.Location.Value.Street,
+                City = conference.Location.City,
+                Street = conference.Location.Street,
                 ParticipantsLimit = conference.ParticipantsLimit.Value,
-                From = conference.Date.Value.From,
-                To = conference.Date.Value.To
+                From = conference.Date.From,
+                To = conference.Date.To
             }).ToList()
         };
 

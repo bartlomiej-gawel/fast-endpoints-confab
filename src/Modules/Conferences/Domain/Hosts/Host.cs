@@ -14,14 +14,13 @@ public class Host : BaseEntity
 
     private Host()
     {
-        Conferences = new List<Conference>();
     }
     
     private Host(string name, string description)
     {
-        Id = HostId.From(Guid.NewGuid());
-        Name = HostName.From(name);
-        Description = HostDescription.From(description);
+        Id = new HostId(Guid.NewGuid());
+        Name = new HostName(name);
+        Description = new HostDescription(description);
         Conferences = new List<Conference>();
     }
     
@@ -32,8 +31,8 @@ public class Host : BaseEntity
 
     public void Update(string name, string description)
     {
-        Name = HostName.From(name);
-        Description = HostDescription.From(description);
+        Name = new HostName(name);
+        Description = new HostDescription(description);
     }
     
     public void Delete()

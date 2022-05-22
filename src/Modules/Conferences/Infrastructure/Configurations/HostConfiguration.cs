@@ -16,18 +16,18 @@ internal class HostConfiguration : IEntityTypeConfiguration<Host>
         builder.Property(x => x.Id)
             .HasColumnName("id")
             .IsRequired()
-            .HasConversion(x => x.Value, x => HostId.From(x));
+            .HasConversion(x => x.Value, x => new HostId(x));
 
         builder.Property(x => x.Name)
             .HasColumnName("name")
             .IsRequired()
             .HasMaxLength(100)
-            .HasConversion(x => x.Value, x => HostName.From(x));
+            .HasConversion(x => x.Value, x => new HostName(x));
 
         builder.Property(x => x.Description)
             .HasColumnName("description")
             .IsRequired()
             .HasMaxLength(1000)
-            .HasConversion(x => x.Value, x => HostDescription.From(x));
+            .HasConversion(x => x.Value, x => new HostDescription(x));
     }
 }

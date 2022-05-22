@@ -26,11 +26,11 @@ internal class GetHostsListEndpoint : EndpointWithoutRequest<List<GetHostsListRe
     {
         var response = await _dbContext.Hosts
             .AsNoTracking()
-            .Select(host => new GetHostsListResponse
+            .Select(x => new GetHostsListResponse
             {
-                HostId = host.Id.Value,
-                HostName = host.Name.Value,
-                HostDescription = host.Description.Value
+                HostId = x.Id.Value,
+                HostName = x.Name.Value,
+                HostDescription = x.Description.Value
             }).ToListAsync(ct);
 
         await SendAsync(response, cancellation: ct);

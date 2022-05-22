@@ -8,8 +8,8 @@ namespace Confab.Modules.Conferences.Features.Hosts.Endpoints;
 
 internal class CreateHostRequest
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string Name { get; } = default!;
+    public string Description { get; } = default!;
 }
 
 internal class CreateHostRequestValidator : Validator<CreateHostRequest>

@@ -17,61 +17,51 @@ internal class ConferenceConfiguration : IEntityTypeConfiguration<Conference>
         builder.Property(x => x.Id)
             .HasColumnName("id")
             .IsRequired()
-            .HasConversion(x => x.Value, x => ConferenceId.From(x));
+            .HasConversion(x => x.Value, x => new ConferenceId(x));
 
         builder.Property(x => x.HostId)
             .HasColumnName("host_id")
             .IsRequired()
-            .HasConversion(x => x.Value, x => HostId.From(x));
+            .HasConversion(x => x.Value, x => new HostId(x));
 
         builder.Property(x => x.Name)
             .HasColumnName("name")
             .HasMaxLength(100)
             .IsRequired()
-            .HasConversion(x => x.Value, x => ConferenceName.From(x));
+            .HasConversion(x => x.Value, x => new ConferenceName(x));
 
         builder.Property(x => x.Description)
             .HasColumnName("description")
             .HasMaxLength(1000)
             .IsRequired()
-            .HasConversion(x => x.Value, x => ConferenceDescription.From(x));
+            .HasConversion(x => x.Value, x => new ConferenceDescription(x));
 
-        builder.Property(x => x.Location)
-            .HasColumnName("location_city")
-            .HasMaxLength(100)
-            .IsRequired()
-            .HasConversion(x => x.Value.City, x => new ConferenceLocation());
-        
-        builder.Property(x => x.Location.Value.Street)
-            .HasColumnName("location_street")
-            .HasMaxLength(100)
-            .IsRequired();
-        
-        // builder.OwnsOne(x => x.Location, x =>
-        // {
-        //     x.Property(p => p.Value.City)
-        //         .HasColumnName("location_city")
-        //         .HasMaxLength(100)
-        //         .IsRequired();
-        //
-        //     x.Property(p => p.Value.Street)
-        //         .HasColumnName("location_street")
-        //         .HasMaxLength(100)
-        //         .IsRequired();
-        //
-        //     x.WithOwner();
-        // });
+        builder.OwnsOne(x => x.Location, y =>
+        {
+            y.Property(p => p.City)
+                .HasColumnName("location_city")
+                .HasMaxLength(50)
+                .IsRequired();
+
+            y.Property(p => p.Street)
+                .HasColumnName("location_street")
+                .HasMaxLength(50)
+                .IsRequired();
+        });
 
         builder.Property(x => x.ParticipantsLimit)
             .HasColumnName("participants_limit")
-            .HasConversion(x => x.Value, x => ConferenceParticipantsLimit.From(x));
+            .HasConversion(x => x.Value, x => new ConferenceParticipantsLimit(x));
 
-        builder.Property(x => x.Date.Value.From)
-            .HasColumnName("date_from")
-            .IsRequired();
+        builder.OwnsOne(x => x.Date, y =>
+        {
+            y.Property(p => p.From)
+                .HasColumnName("date_from")
+                .IsRequired();
 
-        builder.Property(x => x.Date.Value.To)
-            .HasColumnName("date_to")
-            .IsRequired();
+            y.Property(p => p.To)
+                .HasColumnName("date_to")
+                .IsRequired();
+        });
     }
 }

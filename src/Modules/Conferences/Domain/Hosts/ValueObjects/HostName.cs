@@ -1,19 +1,18 @@
-﻿using FastEndpoints;
-using FluentValidation;
-using ValueOf;
+﻿using Confab.Shared.Types;
 
 namespace Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
 
-public class HostName : ValueOf<string, HostName>
+public class HostName : BaseValueObject
 {
-}
-
-public class HostNameValidator : Validator<HostName>
-{
-    public HostNameValidator()
+    public string Value { get; }
+    
+    public HostName(string value)
     {
-        RuleFor(x => x.Value)
-            .MinimumLength(3).WithMessage("Minimum lenght for host name is 3 characters.")
-            .MaximumLength(100).WithMessage("Maximum lenght for host name is 100 characters.");
+        Value = value;
+    }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Value;
     }
 }

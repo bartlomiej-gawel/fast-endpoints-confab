@@ -23,48 +23,56 @@ public class Conference : BaseEntity
         Guid hostId,
         string name,
         string description,
-        (string city, string street) location,
-        int? participantsLimit,
-        (DateTime startDate, DateTime endDate) date)
+        string city,
+        string street,
+        int participantsLimit,
+        DateTime from,
+        DateTime to)
     {
-        Id = ConferenceId.From(Guid.NewGuid());
-        HostId = HostId.From(hostId);
-        Name = ConferenceName.From(name);
-        Description = ConferenceDescription.From(description);
-        Location = ConferenceLocation.From(location);
-        ParticipantsLimit = ConferenceParticipantsLimit.From(participantsLimit);
-        Date = ConferenceDate.From(date);
+        Id = new ConferenceId(Guid.NewGuid());
+        HostId = new HostId(hostId);
+        Name = new ConferenceName(name);
+        Description = new ConferenceDescription(description);
+        Location = new ConferenceLocation(city, street);
+        ParticipantsLimit = new ConferenceParticipantsLimit(participantsLimit);
+        Date = new ConferenceDate(from, to);
     }
 
     public static Conference Create(
         Guid hostId,
         string name,
         string description,
-        (string city, string street) location,
-        int? participantsLimit,
-        (DateTime startDate, DateTime endDate) date)
+        string city,
+        string street,
+        int participantsLimit,
+        DateTime from,
+        DateTime to)
     {
         return new Conference(
             hostId,
             name,
             description,
-            location,
+            city,
+            street,
             participantsLimit,
-            date);
+            from,
+            to);
     }
 
     public void Update(
         string name,
         string description,
-        (string city, string street) location,
-        int? participantsLimit,
-        (DateTime startDate, DateTime endDate) date)
+        string city,
+        string street,
+        int participantsLimit,
+        DateTime from,
+        DateTime to)
     {
-        Name = ConferenceName.From(name);
-        Description = ConferenceDescription.From(description);
-        Location = ConferenceLocation.From(location);
-        ParticipantsLimit = ConferenceParticipantsLimit.From(participantsLimit);
-        Date = ConferenceDate.From(date);
+        Name = new ConferenceName(name);
+        Description = new ConferenceDescription(description);
+        Location = new ConferenceLocation(city, street);
+        ParticipantsLimit = new ConferenceParticipantsLimit(participantsLimit);
+        Date = new ConferenceDate(from, to);
     }
 
     public void Delete()

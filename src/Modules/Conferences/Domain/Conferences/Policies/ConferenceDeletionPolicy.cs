@@ -14,7 +14,7 @@ public class ConferenceDeletionPolicy : IPolicy
     
     public bool IsBroken()
     {
-        return DateTime.UtcNow.Date.AddDays(7) < _date.Value.From;
+        return DateTime.UtcNow.Date.AddDays(7) < _date.From;
     }
 
     public string Message => "Cannot delete conference because it will be start in 7 days";

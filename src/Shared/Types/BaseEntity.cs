@@ -4,7 +4,7 @@ namespace Confab.Shared.Types;
 
 public abstract class BaseEntity
 {
-    protected void CheckPolicy(IPolicy policy)
+    protected static void CheckPolicy(IPolicy policy)
     {
         if (policy.IsBroken())
         {
