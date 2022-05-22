@@ -47,14 +47,13 @@ internal class CreateConferenceEndpoint : Endpoint<CreateConferenceRequest>
 
     public override async Task HandleAsync(CreateConferenceRequest req, CancellationToken ct)
     {
-        var hostId = new HostId(req.HostId);
-        var name = new ConferenceName(req.Name);
-        var description = new ConferenceDescription(req.Description);
-        var location = new ConferenceLocation(req.City, req.Street);
-        var participantsLimit = new ConferenceParticipantsLimit(req.ParticipantsLimit);
-        var date = new ConferenceDate(req.From, req.To);
-        
-        var conference = Conference.Create(hostId, name, description, location, participantsLimit, date);
+        var conference = Conference.CreateConference(
+            new HostId(req.HostId),
+            new ConferenceName(req.Name),
+            new ConferenceDescription(req.Description),
+            new ConferenceLocation(req.City, req.Street),
+            new ConferenceParticipantsLimit(req.ParticipantsLimit),
+            new ConferenceDate(req.From, req.To));
 
         await _dbContext.Conferences.AddAsync(conference, ct);
         await _dbContext.SaveChangesAsync(ct);

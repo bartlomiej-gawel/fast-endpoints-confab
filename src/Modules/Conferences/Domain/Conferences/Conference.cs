@@ -36,7 +36,7 @@ public class Conference : BaseEntity
         Date = date;
     }
 
-    public static Conference Create(
+    public static Conference CreateConference(
         HostId hostId,
         ConferenceName name,
         ConferenceDescription description,
