@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Exceptions.Policies;
+﻿using Confab.Shared.Exceptions.Rules;
 
 namespace Confab.Shared.Types;
 
@@ -54,11 +54,11 @@ public abstract class BaseValueObject
         return !(a == b);
     }
     
-    protected static void CheckPolicy(IPolicy policy)
+    protected static void CheckRule(IRule rule)
     {
-        if (policy.IsBroken())
+        if (rule.IsBroken())
         {
-            throw new PolicyException(policy);
+            throw new RuleException(rule);
         }
     }
 }

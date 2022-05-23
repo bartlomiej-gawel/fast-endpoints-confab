@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Domain\Hosts\Rules" />
       <Folder Include="Infrastructure\Migrations" />
     </ItemGroup>
 

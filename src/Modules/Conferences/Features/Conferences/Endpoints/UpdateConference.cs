@@ -4,7 +4,6 @@ using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 
 namespace Confab.Modules.Conferences.Features.Conferences.Endpoints;
 
@@ -46,10 +45,7 @@ internal class UpdateConferenceEndpoint : Endpoint<UpdateConferenceRequest>
 
     public override async Task HandleAsync(UpdateConferenceRequest req, CancellationToken ct)
     {
-        var conference = await _dbContext.Conferences
-            .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Id.Value == req.ConferenceId, ct);
-
+        var conference = await _dbContext.Conferences.FindAsync(req.ConferenceId);
         if (conference is null)
         {
             throw new ConferenceNotFoundException(req.ConferenceId);

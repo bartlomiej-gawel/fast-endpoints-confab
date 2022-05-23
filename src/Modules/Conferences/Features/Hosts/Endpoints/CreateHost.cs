@@ -1,4 +1,5 @@
 ﻿using Confab.Modules.Conferences.Domain.Hosts;
+using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
 using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
 using FluentValidation;
@@ -36,7 +37,9 @@ internal class CreateHostEndpoint : Endpoint<CreateHostRequest>
 
     public override async Task HandleAsync(CreateHostRequest req, CancellationToken ct)
     {
-        var host = Host.Create(req.Name, req.Description);
+        var host = Host.Create(
+            HostName.Create(req.Name),
+            HostDescription.Create(req.Description));
 
         await _dbContext.Hosts.AddAsync(host, ct);
         await _dbContext.SaveChangesAsync(ct);

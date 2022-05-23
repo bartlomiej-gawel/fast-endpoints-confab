@@ -2,7 +2,7 @@
 
 namespace Confab.Modules.Conferences.Features.Conferences.Exceptions;
 
-internal class ConferenceNotFoundException : AppException
+internal class ConferenceNotFoundException : FeatureException
 {
     public Guid ConferenceId { get; }
     

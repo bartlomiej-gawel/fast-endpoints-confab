@@ -1,4 +1,5 @@
-﻿using Confab.Modules.Conferences.Features.Hosts.Exceptions;
+﻿using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
+using Confab.Modules.Conferences.Features.Hosts.Exceptions;
 using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
 using FluentValidation;
@@ -47,7 +48,9 @@ internal class UpdateHostEndpoint : Endpoint<UpdateHostRequest>
             throw new HostNotFoundException(req.HostId);
         }
         
-        host.Update(req.Name, req.Description);
+        host.Update(
+            HostName.Create(req.Name),
+            HostDescription.Create(req.Description));
 
         _dbContext.Hosts.Update(host);
         await _dbContext.SaveChangesAsync(ct);

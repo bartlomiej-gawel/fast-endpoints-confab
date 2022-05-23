@@ -2,7 +2,7 @@
 
 namespace Confab.Modules.Conferences.Features.Hosts.Exceptions;
 
-internal class HostNotFoundException : AppException
+internal class HostNotFoundException : FeatureException
 {
     public Guid HostId { get; }
     

@@ -24,14 +24,29 @@ internal class CreateConferenceRequestValidator : Validator<CreateConferenceRequ
 {
     public CreateConferenceRequestValidator()
     {
-        RuleFor(x => x.HostId).NotEmpty().WithMessage("Please specify a host identifier");
-        RuleFor(x => x.Name).NotEmpty().WithMessage("Please specify a name");
-        RuleFor(x => x.Description).NotEmpty().WithMessage("Please specify a description");
-        RuleFor(x => x.City).NotEmpty().WithMessage("Please specify a city");
-        RuleFor(x => x.Street).NotEmpty().WithMessage("Please specify a street");
-        RuleFor(x => x.ParticipantsLimit).NotEmpty().WithMessage("Please specify a participants limit");
-        RuleFor(x => x.From).NotEmpty().WithMessage("Please specify a start date");
-        RuleFor(x => x.To).NotEmpty().WithMessage("Please specify an end date");
+        RuleFor(x => x.HostId)
+            .NotEmpty().WithMessage("Please specify a host identifier");
+        
+        RuleFor(x => x.Name)
+            .NotEmpty().WithMessage("Please specify a name");
+        
+        RuleFor(x => x.Description)
+            .NotEmpty().WithMessage("Please specify a description");
+        
+        RuleFor(x => x.City).NotEmpty()
+            .WithMessage("Please specify a city");
+        
+        RuleFor(x => x.Street).NotEmpty()
+            .WithMessage("Please specify a street");
+        
+        RuleFor(x => x.ParticipantsLimit)
+            .NotEmpty().WithMessage("Please specify a participants limit");
+        
+        RuleFor(x => x.From)
+            .NotEmpty().WithMessage("Please specify a start date");
+        
+        RuleFor(x => x.To)
+            .NotEmpty().WithMessage("Please specify an end date");
     }
 }
 

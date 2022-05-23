@@ -1,5 +1,4 @@
-﻿using Confab.Modules.Conferences.Domain.Conferences.Policies;
-using Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
+﻿using Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
 using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
 using Confab.Shared.Types;
 
@@ -69,6 +68,6 @@ internal class Conference : BaseEntity
 
     public void Delete()
     {
-        CheckPolicy(new ConferenceDeletionPolicy(Date));
+        //CheckPolicy(new ConferenceDeletionPolicy(Date));
     }
 }

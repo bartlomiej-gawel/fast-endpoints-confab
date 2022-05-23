@@ -1,5 +1,4 @@
 ﻿using Confab.Modules.Conferences.Domain.Conferences;
-using Confab.Modules.Conferences.Domain.Hosts.Policies;
 using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
 using Confab.Shared.Types;
 
@@ -16,27 +15,26 @@ internal class Host : BaseEntity
     {
     }
     
-    private Host(string name, string description)
+    private Host(HostName name, HostDescription description)
     {
         Id = new HostId(Guid.NewGuid());
-        Name = new HostName(name);
-        Description = new HostDescription(description);
+        Name = name;
+        Description = description;
         Conferences = new List<Conference>();
     }
     
-    public static Host Create(string name, string description)
+    public static Host Create(HostName name, HostDescription description)
     {
         return new Host(name, description);
     }
 
-    public void Update(string name, string description)
+    public void Update(HostName name, HostDescription description)
     {
-        Name = new HostName(name);
-        Description = new HostDescription(description);
+        Name = name;
+        Description = description;
     }
     
     public void Delete()
     {
-        CheckPolicy(new HostDeletionPolicy(Conferences));
     }
 }
