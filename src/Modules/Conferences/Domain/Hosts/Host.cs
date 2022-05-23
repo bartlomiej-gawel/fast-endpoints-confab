@@ -1,4 +1,5 @@
 ﻿using Confab.Modules.Conferences.Domain.Conferences;
+using Confab.Modules.Conferences.Domain.Hosts.Policies;
 using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
 using Confab.Shared.Types;
 
@@ -36,5 +37,6 @@ internal class Host : BaseEntity
     
     public void Delete()
     {
+        CheckPolicy(new HostDeletionPolicy(Conferences));
     }
 }

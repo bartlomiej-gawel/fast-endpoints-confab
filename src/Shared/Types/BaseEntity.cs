@@ -1,14 +1,14 @@
-﻿using Confab.Shared.Exceptions.Rules;
+﻿using Confab.Shared.Exceptions.Policies;
 
 namespace Confab.Shared.Types;
 
 public abstract class BaseEntity
 {
-    protected static void CheckRule(IRule rule)
+    protected static void CheckPolicy(IPolicy policy)
     {
-        if (rule.IsBroken())
+        if (policy.IsBroken())
         {
-            throw new RuleException(rule);
+            throw new PolicyException(policy);
         }
     }
 }
