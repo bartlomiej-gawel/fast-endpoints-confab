@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Concurrent;
+using System.Net;
+using Confab.Shared.Exceptions.CustomExceptions;
+using Microsoft.AspNetCore.Http;
 
 namespace Confab.Shared.Exceptions.Middleware;
 
@@ -18,18 +21,30 @@ internal class ExceptionMiddleware : IMiddleware
 
     private async Task HandleExceptionAsync(Exception exception, HttpContext context)
     {
-        var errorResponse = new
+        var exceptionResponse = exception switch
         {
-            code = exception.GetType().Name,
-            message = exception.Message
+            DomainException ex => new ExceptionResponse(new ErrorsResponse(new Error(GetErrorCode(ex), ex.Message)), HttpStatusCode.BadRequest),
+            FeatureException ex => new ExceptionResponse(new ErrorsResponse(new Error(GetErrorCode(ex), ex.Message)), HttpStatusCode.BadRequest),
+            PolicyException ex => new ExceptionResponse(new ErrorsResponse(new Error(GetErrorCode(ex), ex.Message)), HttpStatusCode.BadRequest),
+            _ => new ExceptionResponse(new ErrorsResponse(new Error("Error", "There was an error.")), HttpStatusCode.InternalServerError)
         };
-
-        context.Response.StatusCode = 400;
         
-        await context.Response.WriteAsJsonAsync(errorResponse);
+        context.Response.StatusCode = (int)(exceptionResponse?.StatusCode ?? HttpStatusCode.InternalServerError);
+
+        var response = exceptionResponse?.Response;
+        if (response is null)
+        {
+            return;
+        }
+        
+        await context.Response.WriteAsJsonAsync(response);
     }
 
-    private record Error(string Code, string Reason);
+    private static readonly ConcurrentDictionary<Type, string> Codes = new();
+    
+    private static string GetErrorCode(object exception) => Codes.GetOrAdd(exception.GetType(), exception.GetType().Name);
+    
+    private record Error(string Type, string Message);
     
     private record ErrorsResponse(params Error[] Errors);
     

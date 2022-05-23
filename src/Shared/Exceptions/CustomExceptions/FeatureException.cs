@@ -1,4 +1,4 @@
-﻿namespace Confab.Shared.Exceptions;
+﻿namespace Confab.Shared.Exceptions.CustomExceptions;
 
 public abstract class FeatureException : Exception
 {

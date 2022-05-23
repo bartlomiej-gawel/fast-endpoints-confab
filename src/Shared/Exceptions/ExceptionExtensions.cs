@@ -8,7 +8,7 @@ internal static class ExceptionExtensions
 {
     public static IServiceCollection AddErrorHandling(this IServiceCollection services)
     {
-        return services.AddSingleton<ExceptionMiddleware>();
+        return services.AddScoped<ExceptionMiddleware>();
     }
 
     public static IApplicationBuilder UseErrorHandling(this WebApplication app)
