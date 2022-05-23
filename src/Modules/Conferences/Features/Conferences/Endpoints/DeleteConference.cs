@@ -23,10 +23,7 @@ internal class DeleteConferenceEndpoint : Endpoint<DeleteConferenceRequest>
 
     public override async Task HandleAsync(DeleteConferenceRequest req, CancellationToken ct)
     {
-        var conference = await _dbContext.Conferences
-            .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Id.Value == req.ConferenceId, ct);
-
+        var conference = await _dbContext.Conferences.FindAsync(req.ConferenceId);
         if (conference is null)
         {
             throw new ConferenceNotFoundException(req.ConferenceId);

@@ -1,9 +1,15 @@
-﻿namespace Confab.Shared.Exceptions.Policies;
+﻿namespace Confab.Shared.Exceptions.CustomExceptions;
+
+public interface IPolicy
+{
+    bool IsBroken();
+    string? Message { get; }
+}
 
 public class PolicyException : Exception
 {
     public IPolicy BrokenPolicy { get; }
-    public string Details { get; }
+    public string? Details { get; }
 
     public PolicyException(IPolicy brokenPolicy) : base(brokenPolicy.Message)
     {

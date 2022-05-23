@@ -69,6 +69,6 @@ internal class Conference : BaseEntity
 
     public void Delete()
     {
-        CheckPolicy(new ConferenceDeletionPolicy(Date));
+        CheckPolicy(new ConferenceDeletionPolicy(Date, ParticipantsLimit));
     }
 }

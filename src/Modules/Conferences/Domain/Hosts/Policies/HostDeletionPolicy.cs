@@ -1,5 +1,5 @@
 ﻿using Confab.Modules.Conferences.Domain.Conferences;
-using Confab.Shared.Exceptions.Policies;
+using Confab.Shared.Exceptions.CustomExceptions;
 
 namespace Confab.Modules.Conferences.Domain.Hosts.Policies;
 
@@ -27,5 +27,5 @@ internal class HostDeletionPolicy : IPolicy
         return true;
     }
 
-    public string Message => "Host conferences are not empty";
+    public string? Message => "Host conferences are not empty";
 }

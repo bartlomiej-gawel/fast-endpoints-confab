@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Exceptions.Policies;
+﻿using Confab.Shared.Exceptions.CustomExceptions;
 
 namespace Confab.Shared.Types;
 
