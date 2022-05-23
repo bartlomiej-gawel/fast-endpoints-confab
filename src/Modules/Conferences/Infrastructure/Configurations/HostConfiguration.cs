@@ -22,12 +22,12 @@ internal class HostConfiguration : IEntityTypeConfiguration<Host>
             .HasColumnName("name")
             .IsRequired()
             .HasMaxLength(100)
-            .HasConversion(x => x.Value, x => HostName.Create(x));
+            .HasConversion(x => x.Value, x => new HostName(x));
 
         builder.Property(x => x.Description)
             .HasColumnName("description")
             .IsRequired()
             .HasMaxLength(1000)
-            .HasConversion(x => x.Value, x => HostDescription.Create(x));
+            .HasConversion(x => x.Value, x => new HostDescription(x));
     }
 }

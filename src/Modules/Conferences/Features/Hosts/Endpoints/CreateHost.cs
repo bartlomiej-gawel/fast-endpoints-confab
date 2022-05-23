@@ -38,8 +38,8 @@ internal class CreateHostEndpoint : Endpoint<CreateHostRequest>
     public override async Task HandleAsync(CreateHostRequest req, CancellationToken ct)
     {
         var host = Host.Create(
-            HostName.Create(req.Name),
-            HostDescription.Create(req.Description));
+            new HostName(req.Name),
+            new HostDescription(req.Description));
 
         await _dbContext.Hosts.AddAsync(host, ct);
         await _dbContext.SaveChangesAsync(ct);

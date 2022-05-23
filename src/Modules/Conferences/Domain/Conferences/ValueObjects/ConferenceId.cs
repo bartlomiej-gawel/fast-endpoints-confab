@@ -2,7 +2,7 @@
 
 namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
 
-public class ConferenceId : BaseId
+internal class ConferenceId : BaseId
 {
     public ConferenceId(Guid value) : base(value)
     {

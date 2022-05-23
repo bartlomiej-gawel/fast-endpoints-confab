@@ -49,8 +49,8 @@ internal class UpdateHostEndpoint : Endpoint<UpdateHostRequest>
         }
         
         host.Update(
-            HostName.Create(req.Name),
-            HostDescription.Create(req.Description));
+            new HostName(req.Name),
+            new HostDescription(req.Description));
 
         _dbContext.Hosts.Update(host);
         await _dbContext.SaveChangesAsync(ct);

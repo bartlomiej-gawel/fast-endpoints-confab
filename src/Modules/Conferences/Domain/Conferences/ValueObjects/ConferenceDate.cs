@@ -1,30 +1,23 @@
-﻿using Confab.Shared.Types;
+﻿using Confab.Shared.Exceptions;
+using Confab.Shared.Types;
+using Throw;
 
 namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
 
-// public class ConferenceDate : ValueOf<(DateTime From, DateTime To), ConferenceDate>
-// {
-// }
-//
-// public class ConferenceDateValidator : Validator<ConferenceDate>
-// {
-//     public ConferenceDateValidator()
-//     {
-//         RuleFor(x => x.Value.From)
-//             .GreaterThan(DateTime.UtcNow).WithMessage("Conference start date cannot be yesterday or earlier.");
-//
-//         RuleFor(x => x.Value.To)
-//             .GreaterThanOrEqualTo(x => x.Value.From).WithMessage("Conference end date cannot be before start.");
-//     }
-// }
-
-public class ConferenceDate : BaseValueObject
+internal class ConferenceDate : BaseValueObject
 {
     public DateTime From { get; }
     public DateTime To { get; }
 
     public ConferenceDate(DateTime from, DateTime to)
     {
+        from.Throw(_ => throw new DomainException("Conference start date cannot be yesterday or earlier."))
+            .IfLessThan(DateTime.UtcNow);
+
+        to.Throw(_ => throw new DomainException("Conference end date cannot be before start."))
+            .IfEquals(from)
+            .IfLessThan(from);
+
         From = from;
         To = to;
     }
