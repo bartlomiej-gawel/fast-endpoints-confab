@@ -7,9 +7,9 @@ namespace Confab.Modules.Conferences.Features.Hosts.Endpoints;
 
 internal class GetHostsListResponse
 {
-    public Guid HostId { get; set; }
-    public string HostName { get; set; }
-    public string HostDescription { get; set; }
+    public Guid HostId { get; init; } = default!;
+    public string HostName { get; init; } = default!;
+    public string HostDescription { get; init; } = default!;
 }
 
 [HttpGet("api/conferences-module/hosts/getHostsList"), AllowAnonymous]

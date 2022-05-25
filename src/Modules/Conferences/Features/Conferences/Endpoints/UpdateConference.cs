@@ -45,7 +45,7 @@ internal class UpdateConferenceEndpoint : Endpoint<UpdateConferenceRequest>
 
     public override async Task HandleAsync(UpdateConferenceRequest req, CancellationToken ct)
     {
-        var conference = await _dbContext.Conferences.FindAsync(req.ConferenceId);
+        var conference = await _dbContext.Conferences.FindAsync(new ConferenceId(req.ConferenceId));
         if (conference is null)
         {
             throw new ConferenceNotFoundException(req.ConferenceId);

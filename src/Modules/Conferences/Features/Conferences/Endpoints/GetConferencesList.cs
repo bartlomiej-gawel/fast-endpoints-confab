@@ -7,12 +7,12 @@ namespace Confab.Modules.Conferences.Features.Conferences.Endpoints;
 
 internal class GetConferencesListResponse
 {
-    public Guid ConferenceId { get; set; }
-    public Guid HostId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public string City { get; set; }
-    public string Street { get; set; }
+    public Guid ConferenceId { get; init; }
+    public Guid HostId { get; init; }
+    public string Name { get; init; } = default!;
+    public string Description { get; init; } = default!;
+    public string City { get; init; } = default!;
+    public string Street { get; init; } = default!;
     public int ParticipantsLimit { get; set; }
     public DateTime From { get; set; }
     public DateTime To { get; set; }

@@ -1,14 +1,14 @@
-﻿using Confab.Modules.Conferences.Features.Conferences.Exceptions;
+﻿using Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
+using Confab.Modules.Conferences.Features.Conferences.Exceptions;
 using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 
 namespace Confab.Modules.Conferences.Features.Conferences.Endpoints;
 
 internal class DeleteConferenceRequest
 {
-    public Guid ConferenceId { get; set; }
+    public Guid ConferenceId { get; init; } = default!;
 }
 
 [HttpDelete("api/conferences-module/conferences/deleteConference/{conferenceId:guid}"), AllowAnonymous]
@@ -23,7 +23,7 @@ internal class DeleteConferenceEndpoint : Endpoint<DeleteConferenceRequest>
 
     public override async Task HandleAsync(DeleteConferenceRequest req, CancellationToken ct)
     {
-        var conference = await _dbContext.Conferences.FindAsync(req.ConferenceId);
+        var conference = await _dbContext.Conferences.FindAsync(new ConferenceId(req.ConferenceId));
         if (conference is null)
         {
             throw new ConferenceNotFoundException(req.ConferenceId);

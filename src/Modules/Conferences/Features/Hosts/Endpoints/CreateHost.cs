@@ -9,19 +9,16 @@ namespace Confab.Modules.Conferences.Features.Hosts.Endpoints;
 
 internal class CreateHostRequest
 {
-    public string Name { get; } = default!;
-    public string Description { get; } = default!;
+    public string Name { get; init; } = default!;
+    public string Description { get; init; } = default!;
 }
 
 internal class CreateHostRequestValidator : Validator<CreateHostRequest>
 {
     public CreateHostRequestValidator()
     {
-        RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Host name cannot be empty.");
-
-        RuleFor(x => x.Description)
-            .NotEmpty().WithMessage("Host description cannot be empty.");
+        RuleFor(x => x.Name).NotEmpty().WithMessage("Host name cannot be empty.");
+        RuleFor(x => x.Description).NotEmpty().WithMessage("Host description cannot be empty.");
     }
 }
 

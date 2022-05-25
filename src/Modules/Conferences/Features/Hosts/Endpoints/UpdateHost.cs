@@ -4,26 +4,22 @@ using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 
 namespace Confab.Modules.Conferences.Features.Hosts.Endpoints;
 
 internal class UpdateHostRequest
 {
-    public Guid HostId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public Guid HostId { get; init; } = default!;
+    public string Name { get; init; } = default!;
+    public string Description { get; init; } = default!;
 }
 
 internal class UpdateHostRequestValidator : Validator<UpdateHostRequest>
 {
     public UpdateHostRequestValidator()
     {
-        RuleFor(x => x.Name)
-            .NotEmpty().WithMessage("Host name cannot be empty.");
-
-        RuleFor(x => x.Description)
-            .NotEmpty().WithMessage("Host description cannot be empty.");
+        RuleFor(x => x.Name).NotEmpty().WithMessage("Host name cannot be empty.");
+        RuleFor(x => x.Description).NotEmpty().WithMessage("Host description cannot be empty.");
     }
 }
 
@@ -39,10 +35,7 @@ internal class UpdateHostEndpoint : Endpoint<UpdateHostRequest>
 
     public override async Task HandleAsync(UpdateHostRequest req, CancellationToken ct)
     {
-        var host = await _dbContext.Hosts
-            .AsNoTracking()
-            .FirstOrDefaultAsync(host => host.Id.Value == req.HostId, ct);
-        
+        var host = await _dbContext.Hosts.FindAsync(new HostId(req.HostId));
         if (host is null)
         {
             throw new HostNotFoundException(req.HostId);

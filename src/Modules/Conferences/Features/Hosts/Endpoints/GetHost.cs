@@ -1,4 +1,5 @@
-﻿using Confab.Modules.Conferences.Features.Hosts.Exceptions;
+﻿using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
+using Confab.Modules.Conferences.Features.Hosts.Exceptions;
 using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
@@ -8,26 +9,26 @@ namespace Confab.Modules.Conferences.Features.Hosts.Endpoints;
 
 internal class GetHostRequest
 {
-    public Guid HostId { get; set; }
+    public Guid HostId { get; init; } = default!;
 }
 
 internal class GetHostResponse
 {
-    public Guid HostId { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public IEnumerable<ConferenceDto> Conferences { get; set; }
+    public Guid HostId { get; init; }
+    public string Name { get; init; } = default!;
+    public string Description { get; init; } = default!;
+    public IEnumerable<ConferenceDto> Conferences { get; init; } = default!;
     
     internal class ConferenceDto
     {
-        public Guid ConferenceId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string City { get; set; }
-        public string Street { get; set; }
-        public int ParticipantsLimit { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
+        public Guid ConferenceId { get; init; }
+        public string Name { get; init; } = default!;
+        public string Description { get; init; } = default!;
+        public string City { get; init; } = default!;
+        public string Street { get; init; } = default!;
+        public int ParticipantsLimit { get; init; }
+        public DateTime From { get; init; }
+        public DateTime To { get; init; }
     }
 }
 
@@ -46,7 +47,7 @@ internal class GetHostEndpoint : Endpoint<GetHostRequest, GetHostResponse>
         var host = await _dbContext.Hosts
             .AsNoTracking()
             .Include(host => host.Conferences)
-            .FirstOrDefaultAsync(host => host.Id.Value == req.HostId, ct);
+            .FirstOrDefaultAsync(host => host.Id == new HostId(req.HostId), ct);
 
         if (host is null)
         {

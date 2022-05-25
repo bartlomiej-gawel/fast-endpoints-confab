@@ -1,14 +1,14 @@
-﻿using Confab.Modules.Conferences.Features.Hosts.Exceptions;
+﻿using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
+using Confab.Modules.Conferences.Features.Hosts.Exceptions;
 using Confab.Modules.Conferences.Infrastructure;
 using FastEndpoints;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 
 namespace Confab.Modules.Conferences.Features.Hosts.Endpoints;
 
 internal class DeleteHostRequest
 {
-    public Guid HostId { get; set; }
+    public Guid HostId { get; init; } = default!;
 }
 
 [HttpDelete("api/conferences-module/hosts/deleteHost/{hostId:guid}"), AllowAnonymous]
@@ -23,10 +23,7 @@ internal class DeleteHostEndpoint : Endpoint<DeleteHostRequest>
 
     public override async Task HandleAsync(DeleteHostRequest req, CancellationToken ct)
     {
-        var host = await _dbContext.Hosts
-            .AsNoTracking()
-            .FirstOrDefaultAsync(host => host.Id.Value == req.HostId, ct);
-        
+        var host = await _dbContext.Hosts.FindAsync(new HostId(req.HostId));
         if (host is null)
         {
             throw new HostNotFoundException(req.HostId);

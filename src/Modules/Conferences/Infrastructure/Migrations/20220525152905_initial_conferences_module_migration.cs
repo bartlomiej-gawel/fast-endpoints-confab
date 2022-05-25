@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Confab.Modules.Conferences.Infrastructure.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial_conferences_module_migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

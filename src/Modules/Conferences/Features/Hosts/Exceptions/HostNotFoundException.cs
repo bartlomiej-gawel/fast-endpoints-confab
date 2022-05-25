@@ -1,5 +1,4 @@
-﻿using Confab.Shared.Exceptions;
-using Confab.Shared.Exceptions.CustomExceptions;
+﻿using Confab.Shared.Exceptions.CustomExceptions;
 
 namespace Confab.Modules.Conferences.Features.Hosts.Exceptions;
 

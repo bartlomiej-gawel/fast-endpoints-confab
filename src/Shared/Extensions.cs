@@ -1,9 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
 using Confab.Shared.Exceptions;
-using Confab.Shared.Postgres;
+using Confab.Shared.Services;
 using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Confab.Bootstrapper")]
@@ -11,10 +10,10 @@ namespace Confab.Shared;
 
 internal static class Extensions
 {
-    public static IServiceCollection AddShared(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddShared(this IServiceCollection services)
     {
         services.AddErrorHandling();
-        services.AddPostgres(configuration);
+        services.AddHostedService<AppInitializer>();
         services.AddFastEndpoints();
         return services;
     }

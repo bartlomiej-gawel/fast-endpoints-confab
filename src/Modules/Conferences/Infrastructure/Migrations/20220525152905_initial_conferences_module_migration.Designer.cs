@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Confab.Modules.Conferences.Infrastructure.Migrations
 {
     [DbContext(typeof(ConferencesDbContext))]
-    [Migration("20220522201611_Initial")]
-    partial class Initial
+    [Migration("20220525152905_initial_conferences_module_migration")]
+    partial class initial_conferences_module_migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
