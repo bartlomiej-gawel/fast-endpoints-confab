@@ -19,7 +19,7 @@ internal class ExceptionMiddleware : IMiddleware
         }
     }
 
-    private async Task HandleExceptionAsync(Exception exception, HttpContext context)
+    private static async Task HandleExceptionAsync(Exception exception, HttpContext context)
     {
         var exceptionResponse = exception switch
         {

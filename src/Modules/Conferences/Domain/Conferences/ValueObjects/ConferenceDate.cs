@@ -1,5 +1,4 @@
-﻿using Confab.Shared.Exceptions;
-using Confab.Shared.Exceptions.CustomExceptions;
+﻿using Confab.Shared.Exceptions.CustomExceptions;
 using Confab.Shared.Types;
 using Throw;
 

@@ -11,12 +11,19 @@ namespace Confab.Modules.Conferences.Features.Conferences.Endpoints;
 internal class CreateConferenceRequest
 {
     public Guid HostId { get; init; } = default!;
+    
     public string Name { get; init; } = default!;
+    
     public string Description { get; init; } = default!;
+    
     public string City { get; init; } = default!;
+    
     public string Street { get; init; } = default!;
+    
     public int ParticipantsLimit { get; init; } = default!;
+    
     public DateTime From { get; init; } = default!;
+    
     public DateTime To { get; init; } = default!;
 }
 
@@ -33,11 +40,11 @@ internal class CreateConferenceRequestValidator : Validator<CreateConferenceRequ
         RuleFor(x => x.Description)
             .NotEmpty().WithMessage("Please specify a description");
         
-        RuleFor(x => x.City).NotEmpty()
-            .WithMessage("Please specify a city");
+        RuleFor(x => x.City)
+            .NotEmpty().WithMessage("Please specify a city");
         
-        RuleFor(x => x.Street).NotEmpty()
-            .WithMessage("Please specify a street");
+        RuleFor(x => x.Street)
+            .NotEmpty().WithMessage("Please specify a street");
         
         RuleFor(x => x.ParticipantsLimit)
             .NotEmpty().WithMessage("Please specify a participants limit");
