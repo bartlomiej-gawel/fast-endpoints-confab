@@ -10,7 +10,7 @@ namespace Confab.Shared;
 
 internal static class Extensions
 {
-    public static IServiceCollection AddShared(this IServiceCollection services)
+    public static IServiceCollection AddModularInfrastructure(this IServiceCollection services)
     {
         services.AddErrorHandling();
         services.AddHostedService<AppInitializer>();
@@ -18,7 +18,7 @@ internal static class Extensions
         return services;
     }
 
-    public static WebApplication UseShared(this WebApplication app)
+    public static WebApplication UseModularInfrastructure(this WebApplication app)
     {
         app.UseErrorHandling();
         app.UseAuthorization();

@@ -4,7 +4,7 @@ using Throw;
 
 namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;
 
-public class ConferenceName : BaseValueObject
+internal class ConferenceName : BaseValueObject
 {
     public string Value { get; }
 
