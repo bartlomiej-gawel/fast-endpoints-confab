@@ -1,5 +1,5 @@
-﻿using Confab.Shared.Exceptions.CustomExceptions;
-using Confab.Shared.Types;
+﻿using Confab.Shared.Domain;
+using Confab.Shared.Exceptions.CustomExceptions;
 using Throw;
 
 namespace Confab.Modules.Conferences.Domain.Conferences.ValueObjects;

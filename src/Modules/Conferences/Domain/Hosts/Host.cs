@@ -1,7 +1,7 @@
 ﻿using Confab.Modules.Conferences.Domain.Conferences;
 using Confab.Modules.Conferences.Domain.Hosts.Policies;
 using Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
-using Confab.Shared.Types;
+using Confab.Shared.Domain;
 
 namespace Confab.Modules.Conferences.Domain.Hosts;
 

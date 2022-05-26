@@ -1,12 +1,14 @@
-using Confab.Bootstrapper.Modules;
 using Confab.Shared;
+using Confab.Shared.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var assemblies = ModuleLoader.LoadAssemblies();
+builder.Host.ConfigureModules();
+
+var assemblies = ModuleLoader.LoadAssemblies(builder.Configuration);
 var modules = ModuleLoader.LoadModules(assemblies);
 
-builder.Services.AddModularInfrastructure();
+builder.Services.AddModularInfrastructure(builder.Configuration, assemblies, modules);
 
 foreach (var module in modules)
 {

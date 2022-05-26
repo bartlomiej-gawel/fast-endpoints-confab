@@ -1,4 +1,4 @@
-﻿using Confab.Shared.Types;
+﻿using Confab.Shared.Domain;
 
 namespace Confab.Modules.Conferences.Domain.Hosts.ValueObjects;
 

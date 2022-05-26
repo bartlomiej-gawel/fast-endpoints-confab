@@ -1,19 +1,9 @@
-﻿namespace Confab.Shared.Types;
+﻿using Confab.Shared.Exceptions.CustomExceptions;
 
-public abstract class BaseId
+namespace Confab.Shared.Domain;
+
+public abstract class BaseValueObject
 {
-    public Guid Value { get; }
-
-    protected BaseId(Guid value)
-    {
-        if (value == Guid.Empty)
-        {
-            throw new InvalidOperationException("Id value cannot be empty!");
-        }
-        
-        Value = value;
-    }
-
     protected abstract IEnumerable<object> GetEqualityComponents();
 
     public override bool Equals(object obj)
@@ -28,7 +18,7 @@ public abstract class BaseId
             return false;
         }
 
-        var valueObject = (BaseId)obj;
+        var valueObject = (BaseValueObject)obj;
 
         return GetEqualityComponents().SequenceEqual(valueObject.GetEqualityComponents());
     }
@@ -44,7 +34,7 @@ public abstract class BaseId
         });
     }
 
-    public static bool operator ==(BaseId a, BaseId b)
+    public static bool operator ==(BaseValueObject a, BaseValueObject b)
     {
         if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
         {
@@ -59,8 +49,16 @@ public abstract class BaseId
         return a.Equals(b);
     }
 
-    public static bool operator !=(BaseId a, BaseId b)
+    public static bool operator !=(BaseValueObject a, BaseValueObject b)
     {
         return !(a == b);
+    }
+    
+    protected static void CheckPolicy(IPolicy policy)
+    {
+        if (policy.IsBroken())
+        {
+            throw new PolicyException(policy);
+        }
     }
 }

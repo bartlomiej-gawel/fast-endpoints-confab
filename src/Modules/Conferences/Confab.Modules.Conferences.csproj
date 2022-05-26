@@ -14,4 +14,15 @@
       <Folder Include="Infrastructure\Migrations" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="module.conferences.json" />
+      <Content Include="module.conferences.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <None Remove="module.conferences.dev.json" />
+      <Content Include="module.conferences.dev.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

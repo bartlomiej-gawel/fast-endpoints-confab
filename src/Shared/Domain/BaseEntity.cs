@@ -1,6 +1,6 @@
 ﻿using Confab.Shared.Exceptions.CustomExceptions;
 
-namespace Confab.Shared.Types;
+namespace Confab.Shared.Domain;
 
 public abstract class BaseEntity
 {
