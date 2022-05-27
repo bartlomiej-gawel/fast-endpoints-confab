@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{2F4923
 		docker\docker-compose.yaml = docker\docker-compose.yaml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confab.Modules.Speakers", "src\Modules\Speakers\Confab.Modules.Speakers.csproj", "{2C21E988-A664-4426-AB56-84FD874EE44F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,7 @@ Global
 		{90E89714-5A33-4B4D-933C-1EFC49519B3A} = {FD4BE942-F594-4F02-B103-6DD773F091B4}
 		{A3D84113-D6EE-46B7-B45F-C4500D347853} = {8BE3FF2F-3071-427F-B313-DB958C03249C}
 		{CF1C20B3-6C3E-4406-8478-BEB3C56AED05} = {A3D84113-D6EE-46B7-B45F-C4500D347853}
+		{2C21E988-A664-4426-AB56-84FD874EE44F} = {A3D84113-D6EE-46B7-B45F-C4500D347853}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BAAA91CA-C57B-450B-B6A7-CD80C08B21EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -51,5 +54,9 @@ Global
 		{CF1C20B3-6C3E-4406-8478-BEB3C56AED05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF1C20B3-6C3E-4406-8478-BEB3C56AED05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF1C20B3-6C3E-4406-8478-BEB3C56AED05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C21E988-A664-4426-AB56-84FD874EE44F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C21E988-A664-4426-AB56-84FD874EE44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C21E988-A664-4426-AB56-84FD874EE44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C21E988-A664-4426-AB56-84FD874EE44F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
