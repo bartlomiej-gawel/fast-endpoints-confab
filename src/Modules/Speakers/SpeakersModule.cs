@@ -1,4 +1,6 @@
-﻿using Confab.Shared.Modules;
+﻿using Confab.Modules.Speakers.Infrastructure;
+using Confab.Shared.Modules;
+using Confab.Shared.Postgres;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,11 +13,10 @@ internal class SpeakersModule : IModule
     
     public void Register(IServiceCollection services, IConfiguration configuration)
     {
-        throw new NotImplementedException();
+        services.AddPostgres<SpeakersDbContext>(configuration);
     }
 
     public void Use(IApplicationBuilder app)
     {
-        throw new NotImplementedException();
     }
 }
