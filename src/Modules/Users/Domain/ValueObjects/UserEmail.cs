@@ -2,13 +2,13 @@
 using Confab.Shared.Validations;
 using Throw;
 
-namespace Confab.Modules.Speakers.Domain.ValueObjects;
+namespace Confab.Modules.Users.Domain.ValueObjects;
 
-internal class SpeakerEmail : BaseValueObject
+internal class UserEmail : BaseValueObject
 {
     public string Value { get; }
 
-    public SpeakerEmail(string value)
+    public UserEmail(string value)
     {
         value.Throw().IfEmailNotMatchesRegex();
         

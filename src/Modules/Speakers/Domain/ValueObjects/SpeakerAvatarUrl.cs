@@ -6,7 +6,7 @@ namespace Confab.Modules.Speakers.Domain.ValueObjects;
 
 internal class SpeakerAvatarUrl : BaseValueObject
 {
-    public string Value { get; set; }
+    public string Value { get; }
 
     public SpeakerAvatarUrl(string value)
     {

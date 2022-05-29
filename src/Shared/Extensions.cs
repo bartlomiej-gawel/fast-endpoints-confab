@@ -1,10 +1,11 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
+using Confab.Shared.Auth;
+using Confab.Shared.Endpoints;
 using Confab.Shared.Exceptions;
 using Confab.Shared.Modules;
 using Confab.Shared.Postgres;
 using Confab.Shared.Services;
-using FastEndpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +25,8 @@ internal static class Extensions
         services.AddPostgres(configuration);
         services.AddHostedService<AppInitializer>();
         services.AddModuleDisabler(configuration);
-        services.AddFastEndpoints();
+        services.AddEndpoints();
+        services.AddAuth(configuration);
 
         return services;
     }
@@ -32,8 +34,8 @@ internal static class Extensions
     public static WebApplication UseModularInfrastructure(this WebApplication app)
     {
         app.UseErrorHandling();
-        app.UseAuthorization();
-        app.UseFastEndpoints();
+        app.UseAuth();
+        app.UseEndpoints();
         return app;
     }
 }

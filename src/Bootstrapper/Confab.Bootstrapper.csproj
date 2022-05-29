@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Modules\Conferences\Confab.Modules.Conferences.csproj" />
       <ProjectReference Include="..\Modules\Speakers\Confab.Modules.Speakers.csproj" />
+      <ProjectReference Include="..\Modules\Users\Confab.Modules.Users.csproj" />
       <ProjectReference Include="..\Shared\Confab.Shared.csproj" />
     </ItemGroup>
 
