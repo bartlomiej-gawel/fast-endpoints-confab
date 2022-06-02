@@ -9,7 +9,7 @@ internal static class AuthExtensions
 {
     public static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddAuthenticationJWTBearer(configuration.GetSection());
+        //services.AddAuthenticationJWTBearer(configuration.GetSection());
 
         return services;
     }

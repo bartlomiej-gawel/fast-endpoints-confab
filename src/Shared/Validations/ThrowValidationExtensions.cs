@@ -9,12 +9,26 @@ public static class ThrowValidationExtensions
     public static ref readonly Validatable<string> IfEmailNotMatchesRegex(this in Validatable<string> validatable)
     {
         Regex emailRegex = new(
-            "^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$",
+            "",
             RegexOptions.Compiled | RegexOptions.IgnoreCase);
         
         if (!emailRegex.IsMatch(validatable.Value))
         {
             throw new DomainException("Please specify correct email address.");
+        }
+
+        return ref validatable;
+    }
+
+    public static ref readonly Validatable<string> IfPasswordNotMatchesRegex(this in Validatable<string> validatable)
+    {
+        Regex passwordRegex = new(
+            "",
+            RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
+        if (!passwordRegex.IsMatch(validatable.Value))
+        {
+            throw new DomainException("Please specify correct password.");
         }
 
         return ref validatable;

@@ -10,4 +10,8 @@
       <ProjectReference Include="..\..\Shared\Confab.Shared.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Infrastructure\Migrations" />
+    </ItemGroup>
+
 </Project>

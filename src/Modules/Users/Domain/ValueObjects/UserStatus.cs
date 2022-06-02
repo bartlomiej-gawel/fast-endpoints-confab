@@ -1,6 +1,9 @@
-﻿namespace Confab.Modules.Users.Domain.ValueObjects;
+﻿using System.Runtime.Serialization;
 
-public class UserStatus
+namespace Confab.Modules.Users.Domain.ValueObjects;
+
+internal enum UserStatus
 {
-    
+    [EnumMember(Value = "Active")] Active = 1,
+    [EnumMember(Value = "Inactive")] Inactive = 2
 }
